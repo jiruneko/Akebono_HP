@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 export const metadata = {
-  title: 'メンバー',
+  title: 'お問い合わせ',
 };
 
 export const revalidate = 60;
@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode;
 };
 
-export default function MembersLayout({ children }: Props) {
+export default function ContactLayout({ children }: Props) {
   return (
     <main>
       <section
@@ -27,7 +27,11 @@ export default function MembersLayout({ children }: Props) {
           color: '#2f4638',
         }}
       >
-        <div style={{ textAlign: 'center' }}>
+        <div
+          style={{
+            textAlign: 'center',
+          }}
+        >
           <h1
             style={{
               margin: 0,
@@ -37,8 +41,9 @@ export default function MembersLayout({ children }: Props) {
               letterSpacing: '0.04em',
             }}
           >
-            Members
+            Contact
           </h1>
+
           <p
             style={{
               margin: '16px 0 0',
@@ -47,7 +52,7 @@ export default function MembersLayout({ children }: Props) {
               fontWeight: 600,
             }}
           >
-            メンバー
+            お問い合わせ
           </p>
         </div>
       </section>

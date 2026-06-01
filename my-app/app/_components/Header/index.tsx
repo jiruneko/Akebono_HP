@@ -9,35 +9,25 @@ export default function Header() {
       <Link href="/" className={styles.logoLink}>
         <Image
           src="/logo.png"
-          alt="SIMPLE"
+          alt="Akebono Secure AI"
           className={styles.logo}
           width={900}
           height={600}
           priority
-          /* ★ 既存のCSSクラス（styles.logo）の干渉を防ぎつつ、
-               今の状態から確実に約3倍の大きさ（横幅を調整）にするために
-               インラインのスタイルを追加しています。
-          */
-          style={{
-            width: '240px',   // 元の表示サイズに合わせて調整してください（例: 40pxの3倍で120px）
-            height: 'auto',   // 縦横比（アスペクト比）を自動で維持
-          }}
         />
-        </Link>
-        <nav className={styles.nav}>
-          <ul className={styles.items}>
-            <li>
-              <Link href="/news">ニュース</Link>
-            </li>
-            <li>
-              <Link href="members">メンバー</Link>
-            </li>
-            <li>
-              <Link href="contact">お問い合わせ</Link>
-            </li>
-          </ul>
-        </nav>
-      <Menu />
+      </Link>
+
+      <nav className={styles.nav}>
+        <ul className={styles.items}>
+          <li><Link href="/news">ニュース</Link></li>
+          <li><Link href="/members">メンバー</Link></li>
+          <li><Link href="/contact">お問い合わせ</Link></li>
+        </ul>
+      </nav>
+
+      <div className={styles.mobileMenu}>
+        <Menu />
+      </div>
     </header>
   );
 }
