@@ -1,21 +1,36 @@
 .button {
-    display: block;
-    padding: 20px 40px;
-    border-radius: var(--border-radius);
-    width: 300px;
-    background: 
-    url("/arrow-right.svg") no-repeat right 20px center,
-    var(--color-button-primary);
-    color: var(--color-text-unpainted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  width: 260px;
+  min-height: 60px;
+  padding: 0 24px;
+
+  color: #ffffff;
+  background:
+    url("/arrow-right.svg") no-repeat right 24px center / 22px auto,
+    #333333;
+
+  border-radius: 8px;
+  text-decoration: none;
+
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
-.buttton:hover {
-    opacity: 0.9;
+.button span {
+  color: #ffffff;
+}
+
+.button:hover {
+  opacity: 0.9;
 }
 
 @media (max-width: 640px) {
-    .button {
-        padding: 16px 24px;
-        width: 100%;
-    }
+  .button {
+    width: 100%;
+  }
 }

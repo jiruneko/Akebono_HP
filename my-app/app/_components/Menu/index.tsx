@@ -1,43 +1,97 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
-import cx from 'classnames';
-import styles from './index.module.css';
 
 export default function Menu() {
-  const [isOpen, setOpen] = useState<boolean>(false);
-  const open = () => setOpen(true);
-  const close = () => setOpen(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openMenu = () => setIsOpen(true);
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <div>
-      <nav className={cx(styles.nav, isOpen && styles.open)}>
-        <ul className={styles.items}>
-          <li>
-            <Link href="/news">ニュース</Link>
-          </li>
-          <li>
-            <Link href="/members">メンバー</Link>
-          </li>
-          <li>
-            <Link href="/contact">お問い合わせ</Link>
-          </li>
-        </ul>
-        <button className={cx(styles.button, styles.close)} onClick={close}>
-          <Image
-            src="/close.svg"
-            alt="閉じる"
-            width={24}
-            height={24}
-            priority
-          />
+    <>
+      {!isOpen && (
+        <button
+          type="button"
+          onClick={openMenu}
+          aria-label="メニューを開く"
+          style={{
+            width: 48,
+            height: 48,
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            gap: 6,
+            padding: 10,
+          }}
+        >
+          <span style={{ width: 28, height: 3, background: '#fff', borderRadius: 999 }} />
+          <span style={{ width: 28, height: 3, background: '#fff', borderRadius: 999 }} />
+          <span style={{ width: 28, height: 3, background: '#fff', borderRadius: 999 }} />
         </button>
-      </nav>
-      <button className={styles.button} onClick={open}>
-        <Image src="/menu.svg" alt="メニュー" width={24} height={24} />
-      </button>
-    </div>
+      )}
+
+      <div
+        onClick={closeMenu}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 999999,
+          background: '#ffffff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
+          opacity: isOpen ? 1 : 0,
+          pointerEvents: isOpen ? 'auto' : 'none',
+          transition: 'transform 0.4s ease, opacity 0.4s ease',
+        }}
+      >
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            closeMenu();
+          }}
+          aria-label="メニューを閉じる"
+          style={{
+            position: 'absolute',
+            top: 32,
+            right: 32,
+            width: 48,
+            height: 48,
+            fontSize: 40,
+            lineHeight: 1,
+            background: 'transparent',
+            color: '#333333',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          ×
+        </button>
+
+        <ul
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            listStyle: 'none',
+            padding: 0,
+            margin: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 36,
+            textAlign: 'center',
+          }}
+        >
+          <li><Link href="/news" onClick={closeMenu}>ニュース</Link></li>
+          <li><Link href="/members" onClick={closeMenu}>メンバー</Link></li>
+          <li><Link href="/contact" onClick={closeMenu}>お問い合わせ</Link></li>
+        </ul>
+      </div>
+    </>
   );
 }
