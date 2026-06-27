@@ -5,21 +5,21 @@ import Header from './_components/Header';
 import Footer from './_components/Footer';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL('https://akebono.tech'),
   title: {
-    template: '%s | シンプルなコーポレートサイト',
-    default: 'シンプルなコーポレートサイト',
+    template: '%s | Akebono',
+    default: 'Akebono | AIの力で士業の世界を変える',
   },
   description:
-    '「Next.js＋ヘッドレスCMSではじめる！ かんたん・モダンWebサイト制作入門」で作成されるサイトです。',
+    'Akebonoは、AIの力で士業を支援するモダンテックカンパニーです。',
   openGraph: {
-    title: 'Akebonoカンパニー',
+    title: 'Akebono | AIの力で士業の世界を変える',
     description:
-      '「Next.js＋ヘッドレスCMSではじめる！ かんたん・モダンWebサイト制作入門」で作成されるサイトです。',
+      'Akebonoは、AIの力で士業を支援するモダンテックカンパニーです。',
     images: ['/ogp.png'],
   },
   alternates: {
-    canonical: 'http://localhost:3000',
+    canonical: 'https://akebono.tech',
   },
 };
 
